@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Athenaeum</string>
+    <string name="username_hint">Username</string>
+    <string name="signin_label">Sign In</string>
+    <string name="password_hint">Password</string>
+    <string name="signin_btn">Sign In</string>
+    <string name="forgot_password_txt">Forgot Password?</string>
+    <string name="copyright_appname">&#169; Athenaeum, 2019</string>
+    <string name="progress_txt">Please wait while we are loading...</string>
+    <string name="home_label">Home</string>
+    <string name="collection_label">Collection</string>
+    <string name="result_label">Result</string>
+    <string name="setting_label">Setting</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
