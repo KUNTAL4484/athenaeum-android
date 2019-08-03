@@ -15,4 +15,17 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="stream_title">Stream</string>
+    <string name="year_2019_label">2019</string>
+    <string name="more_label">More</string>
+    <string name="year_2010_label">2010</string>
+    <string name="year_2011_label">2011</string>
+    <string name="year_2012_label">2012</string>
+    <string name="year_2013_label">2013</string>
+    <string name="year_2014_label">2014</string>
+    <string name="year_2015_label">2015</string>
+    <string name="year_2016_label">2016</string>
+    <string name="year_2017_label">2017</string>
+    <string name="year_2018_label">2018</string>
+    <string name="no_question_available">No Question Available!!!</string>
+    <string name="prev_question_sample_title">Question Paper 2016 BLa Bla Bla blablabal</string>
 </resources>

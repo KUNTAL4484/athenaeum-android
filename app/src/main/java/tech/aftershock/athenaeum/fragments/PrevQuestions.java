@@ -1,6 +1,7 @@
 package tech.aftershock.athenaeum.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +18,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import tech.aftershock.athenaeum.PreviousQuestionBoard;
 import tech.aftershock.athenaeum.R;
 import tech.aftershock.athenaeum.adapters.StreamAdapter;
+import tech.aftershock.athenaeum.libs.RecyclerItemClickListener;
+import tech.aftershock.athenaeum.libs.RecyclerItemTouchListener;
 import tech.aftershock.athenaeum.models.Stream;
 
 /**
@@ -54,6 +59,17 @@ public class PrevQuestions extends Fragment {
 
         mAdapter = new StreamAdapter(mStreams);
         mStreamList.setLayoutManager(new GridLayoutManager(getActivity(), 2, RecyclerView.VERTICAL, false));
+        mStreamList.addOnItemTouchListener(new RecyclerItemTouchListener(getActivity(), mStreamList, new RecyclerItemClickListener() {
+            @Override
+            public void onClick(View item, int position) {
+                Intent intent = new Intent(getActivity(), PreviousQuestionBoard.class);
+                intent.putExtra("stream", position);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(View item, int position) { }
+        }));
         mStreamList.setAdapter(mAdapter);
 
         return mView;

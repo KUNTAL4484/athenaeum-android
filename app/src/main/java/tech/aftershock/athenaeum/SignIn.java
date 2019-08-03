@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +14,7 @@ import android.widget.TextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import tech.aftershock.athenaeum.libs.AthProgressDialog;
+import tech.aftershock.athenaeum.libs.AuthProgressDialog;
 import tech.aftershock.athenaeum.libs.NetworkClient;
 import tech.aftershock.athenaeum.libs.NetworkOperations;
 import tech.aftershock.athenaeum.libs.StaticConstant;
@@ -31,7 +30,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
     private TextView mForgotPassword;
 
     private NetworkOperations mOperation;
-    private AthProgressDialog mDialog;
+    private AuthProgressDialog mDialog;
 
     private Call<SignInResponse> mSignInCall;
 
@@ -50,7 +49,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
         mSignInBtn.setOnClickListener(this);
 
-        mDialog = new AthProgressDialog();
+        mDialog = new AuthProgressDialog();
     }
 
     @Override

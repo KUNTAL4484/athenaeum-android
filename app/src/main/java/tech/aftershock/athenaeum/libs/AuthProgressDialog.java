@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import tech.aftershock.athenaeum.R;
 
-public class AthProgressDialog {
+public class AuthProgressDialog {
 
     private AlertDialog mDialog = null;
 
