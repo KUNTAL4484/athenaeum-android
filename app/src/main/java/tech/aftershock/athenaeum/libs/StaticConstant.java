@@ -14,4 +14,9 @@ public class StaticConstant {
         public final static String CLASS_ROLL = "roll";
         public final static String SEMESTER = "semester";
     }
+
+    public final class ContentType {
+        public final static int EBOOK = 0;
+        public final static int PREV_QUESTION = 1;
+    }
 }

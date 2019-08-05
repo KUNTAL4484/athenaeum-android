@@ -43,4 +43,8 @@ public class NetworkClient {
     public static NetworkOperations getOperations(Context context) {
         return getRetrofit(context).create(NetworkOperations.class);
     }
+
+    public static String getPreviousQuestionBase(){
+        return BASE_URL + "contents/prev_questions/";
+    }
 }

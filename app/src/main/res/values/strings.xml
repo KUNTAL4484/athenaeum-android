@@ -28,4 +28,6 @@
     <string name="year_2018_label">2018</string>
     <string name="no_question_available">No Question Available!!!</string>
     <string name="prev_question_sample_title">Question Paper 2016 BLa Bla Bla blablabal</string>
+    <string name="dummy_semester_title">6</string>
+    <string name="semester_title">Semester:</string>
 </resources>

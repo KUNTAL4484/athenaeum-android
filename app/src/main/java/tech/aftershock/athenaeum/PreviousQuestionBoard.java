@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,6 +18,7 @@ import retrofit2.Response;
 import tech.aftershock.athenaeum.adapters.PrevQuestionBoardAdapter;
 import tech.aftershock.athenaeum.libs.NetworkClient;
 import tech.aftershock.athenaeum.libs.NetworkOperations;
+import tech.aftershock.athenaeum.libs.RecyclerItemClickListener;
 import tech.aftershock.athenaeum.libs.Stdlib;
 import tech.aftershock.athenaeum.models.GetPrevQuestionBoardResponse;
 import tech.aftershock.athenaeum.models.PrevQuestionBoard;
@@ -52,7 +54,18 @@ public class PreviousQuestionBoard extends AppCompatActivity {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
         }
 
-        mBoardAdapter = new PrevQuestionBoardAdapter(this, new ArrayList<PrevQuestionBoard>());
+        mBoardAdapter = new PrevQuestionBoardAdapter(this, new ArrayList<PrevQuestionBoard>(), new RecyclerItemClickListener() {
+            @Override
+            public void onClick(View item, int position) {
+                Intent intent = new Intent(PreviousQuestionBoard.this, PreviousQuestionList.class);
+                intent.putExtra("stream", mStream);
+                intent.putExtra("year", mBoardAdapter.getBoard(position).getBoardYear());
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(View item, int position) { }
+        });
         mBoardList.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         mBoardList.setAdapter(mBoardAdapter);
 

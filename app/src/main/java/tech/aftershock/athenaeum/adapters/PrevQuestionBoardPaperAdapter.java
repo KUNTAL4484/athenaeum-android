@@ -20,12 +20,10 @@ public class PrevQuestionBoardPaperAdapter extends RecyclerView.Adapter<PrevQues
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView cover;
         TextView title;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
-            cover = itemView.findViewById(R.id.prev_question_cover);
             title = itemView.findViewById(R.id.prev_question_title);
         }
     }
@@ -46,10 +44,6 @@ public class PrevQuestionBoardPaperAdapter extends RecyclerView.Adapter<PrevQues
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PreviousQuestionPaper paper = mPapers.get(position);
-
-        Picasso.get()
-                .load(R.drawable.pdf_icon)
-                .into(holder.cover);
 
         holder.title.setText(paper.getTitle());
     }

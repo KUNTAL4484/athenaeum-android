@@ -11,12 +11,20 @@ public class PrevQuestionBoard {
     @Expose
     private String boardName;
 
+    @SerializedName("board_year")
+    @Expose
+    private Integer boardYear;
+
     @SerializedName("papers")
     @Expose
     private List<PreviousQuestionPaper> papers;
 
     public String getBoardName() {
         return boardName;
+    }
+
+    public Integer getBoardYear() {
+        return boardYear;
     }
 
     public List<PreviousQuestionPaper> getPapers() {
