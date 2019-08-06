@@ -1,15 +1,10 @@
 package tech.aftershock.athenaeum.libs;
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.graphics.Color;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
-
-import tech.aftershock.athenaeum.R;
 
 public class Stdlib {
 

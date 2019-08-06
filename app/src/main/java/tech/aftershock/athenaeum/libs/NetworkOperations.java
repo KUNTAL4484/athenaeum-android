@@ -11,6 +11,7 @@ import retrofit2.http.Path;
 import tech.aftershock.athenaeum.models.GetPrevQuestionBoardResponse;
 import tech.aftershock.athenaeum.models.PreviousQuestionPaper;
 import tech.aftershock.athenaeum.models.SignInResponse;
+import tech.aftershock.athenaeum.models.VideoBoard;
 
 public interface NetworkOperations {
 
@@ -23,4 +24,7 @@ public interface NetworkOperations {
 
     @GET("prevquestion/getquestionpaperlist/{stream}/{year}")
     Call<List<PreviousQuestionPaper>> getPreviousYearQuestionPaperList(@Path("stream") int stream, @Path("year") int year);
+
+    @GET("video/getvideoboard")
+    Call<List<VideoBoard>> getVideoBoard();
 }
