@@ -48,6 +48,10 @@ public class NetworkClient {
         return BASE_URL + "contents/prev_questions/";
     }
 
+    public static String getVideoBase() {
+        return BASE_URL + "contents/videos/";
+    }
+
     public static String getVideoThumbBase() {
         return BASE_URL + "contents/video_thumbs/";
     }

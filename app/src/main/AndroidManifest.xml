@@ -13,7 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PreviousQuestionList"></activity>
+        <activity android:name=".VideoList"></activity>
+        <activity
+            android:name=".VideoRoom"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".Theater" />
+        <activity android:name=".PreviousQuestionList" />
         <activity android:name=".PreviousQuestionBoard" />
         <activity android:name=".SplashScreen">
             <intent-filter>

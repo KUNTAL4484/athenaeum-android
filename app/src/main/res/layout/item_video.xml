@@ -4,14 +4,16 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:id="@+id/item_video_container">
 
     <ImageView
         android:id="@+id/item_video_thumb"
         android:layout_width="128dp"
         android:layout_height="72dp"
         android:src="@drawable/ic_baseline_play_circle_outline_24px"
-        android:scaleType="fitCenter" />
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
 
 
     <TextView

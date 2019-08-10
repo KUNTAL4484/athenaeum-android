@@ -1,6 +1,7 @@
 package tech.aftershock.athenaeum.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,9 +20,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import tech.aftershock.athenaeum.R;
+import tech.aftershock.athenaeum.Theater;
+import tech.aftershock.athenaeum.VideoList;
 import tech.aftershock.athenaeum.adapters.VideoBoardAdapter;
 import tech.aftershock.athenaeum.libs.NetworkClient;
 import tech.aftershock.athenaeum.libs.NetworkOperations;
+import tech.aftershock.athenaeum.libs.RecyclerItemClickListener;
+import tech.aftershock.athenaeum.models.Subject;
+import tech.aftershock.athenaeum.models.Video;
 import tech.aftershock.athenaeum.models.VideoBoard;
 
 /**
@@ -37,6 +43,10 @@ public class Videos extends Fragment {
 
     private Call<List<VideoBoard>> mGetVideoBoardCall = null;
 
+    public interface VideoItemClickListener {
+        void onItemClick(Video video);
+    }
+
     public Videos() { }
 
     public static Videos newInstance() {
@@ -48,7 +58,7 @@ public class Videos extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_videos, container, false);
 
@@ -56,7 +66,25 @@ public class Videos extends Fragment {
 
         mOperations = NetworkClient.getOperations(getActivity());
 
-        mAdapter = new VideoBoardAdapter(getActivity(), new ArrayList<VideoBoard>());
+        mAdapter = new VideoBoardAdapter(getActivity(), new ArrayList<VideoBoard>(), new VideoItemClickListener() {
+            @Override
+            public void onItemClick(Video video) {
+                Intent intent = new Intent(getActivity(), Theater.class);
+                intent.putExtra("video", video);
+
+                startActivity(intent);
+            }
+        }, new RecyclerItemClickListener() {
+            @Override
+            public void onClick(View item, int position) {
+                Intent intent = new Intent(getActivity(), VideoList.class);
+                intent.putExtra("subject", mAdapter.getSubject(position));
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(View item, int position) { }
+        });
         mBoard.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
         mBoard.setAdapter(mAdapter);
 

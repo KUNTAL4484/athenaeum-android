@@ -11,6 +11,7 @@ import retrofit2.http.Path;
 import tech.aftershock.athenaeum.models.GetPrevQuestionBoardResponse;
 import tech.aftershock.athenaeum.models.PreviousQuestionPaper;
 import tech.aftershock.athenaeum.models.SignInResponse;
+import tech.aftershock.athenaeum.models.Video;
 import tech.aftershock.athenaeum.models.VideoBoard;
 
 public interface NetworkOperations {
@@ -27,4 +28,7 @@ public interface NetworkOperations {
 
     @GET("video/getvideoboard")
     Call<List<VideoBoard>> getVideoBoard();
+
+    @GET("video/getsubjectvideos/{subject}")
+    Call<List<Video>> getSubjectVideos(@Path("subject") String subject);
 }

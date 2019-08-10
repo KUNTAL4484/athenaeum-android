@@ -32,4 +32,9 @@
     <string name="semester_title">Semester:</string>
     <string name="video_title_label">Dummy Video Title</string>
     <string name="video_board_title">Video Board</string>
+    <string name="view_label">123,456</string>
+    <string name="subject_label">Subject</string>
+    <string name="description_dummy_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec mi sagittis, tristique quam ac, auctor nisi. Sed aliquet, dolor sit amet pharetra placerat, leo ex bibendum sem, vitae rutrum massa odio eget nisl. Cras feugiat porta libero, ut malesuada lectus egestas id. Sed pulvinar, augue mollis sodales malesuada, diam arcu consectetur dolor, ut commodo tortor felis sed massa. Aliquam laoreet enim nisi, et maximus lectus vestibulum sit amet. Nunc malesuada ligula nec dignissim condimentum. Etiam eu tincidunt ipsum. Donec sed fringilla ante. Suspendisse a molestie justo.</string>
+    <string name="add_to_collection">Add To Collection</string>
+    <string name="description_label">Description</string>
 </resources>

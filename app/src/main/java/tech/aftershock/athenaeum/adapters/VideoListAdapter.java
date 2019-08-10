@@ -12,61 +12,54 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Locale;
 
 import tech.aftershock.athenaeum.R;
-import tech.aftershock.athenaeum.fragments.Videos;
 import tech.aftershock.athenaeum.libs.NetworkClient;
 import tech.aftershock.athenaeum.models.Video;
 
-public class VideoBoardVideoListAdapter extends RecyclerView.Adapter<VideoBoardVideoListAdapter.ViewHolder> {
+public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.ViewHolder> {
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
-        View container;
-        ImageView thumb;
-        TextView title;
+        ImageView thumbnail;
+        TextView title, views, time;
 
-        ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            container = itemView.findViewById(R.id.item_video_container);
-            thumb = itemView.findViewById(R.id.item_video_thumb);
-            title = itemView.findViewById(R.id.item_video_title);
-
-            container.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            mVideoItemClickListener.onItemClick(mVideos.get(getAdapterPosition()));
+            thumbnail = itemView.findViewById(R.id.video_full_thumbnail);
+            title = itemView.findViewById(R.id.video_full_title);
+            views = itemView.findViewById(R.id.video_full_views);
+            time = itemView.findViewById(R.id.video_full_time);
         }
     }
 
     private List<Video> mVideos;
-    private Videos.VideoItemClickListener mVideoItemClickListener;
 
-    public VideoBoardVideoListAdapter(List<Video> videos, Videos.VideoItemClickListener listener) {
+    public VideoListAdapter(List<Video> videos) {
         mVideos = videos;
-        mVideoItemClickListener = listener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_video, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_full_video, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Video video = mVideos.get(position);
-        holder.title.setText(video.getTitle());
 
         Picasso.get()
                 .load(NetworkClient.getVideoThumbBase() + video.getThumbnail())
                 .placeholder(R.drawable.ic_baseline_play_circle_outline_24px)
                 .error(R.drawable.ic_baseline_play_circle_outline_24px)
-                .fit()
-                .into(holder.thumb);
+                .into(holder.thumbnail);
+
+        holder.title.setText(video.getTitle());
+        holder.views.setText(String.format(Locale.getDefault(), "%s views", video.getViews()));
+        holder.time.setText(getBeautifiedTime(video.getTime()));
     }
 
     @Override
@@ -75,8 +68,19 @@ public class VideoBoardVideoListAdapter extends RecyclerView.Adapter<VideoBoardV
     }
 
     public void addVideos(List<Video> videos) {
-        mVideos.clear();
         mVideos.addAll(videos);
         notifyDataSetChanged();
+    }
+
+    public Video getVideo(int position) {
+        return mVideos.get(position);
+    }
+
+    private String getBeautifiedTime(int second) {
+        int hours = second / 3600;
+        int minutes = (second % 3600) / 60;
+        int seconds = second % 60;
+
+        return String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
     }
 }
